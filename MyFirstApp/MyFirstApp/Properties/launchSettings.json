@@ -1,27 +1,27 @@
 ﻿{
   "iisSettings": {
-    "windowsAuthentication": false,
+    "windowsAuthentication": false, // both supports
     "anonymousAuthentication": true,
     "iisExpress": {
       "applicationUrl": "http://localhost:33896",
-      "sslPort": 0
+      "sslPort": 0 // 0 or 1
     }
   },
   "profiles": {
     "Kestrel Server": {
       "commandName": "Project", // indicates running on Kestrel
       "dotnetRunMessages": true, // can run dotnet commands on CLI
-      "launchBrowser": true, // 
+      "launchBrowser": true, // on running launch browser
       "applicationUrl": "http://localhost:5283",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development" // production, staging, uat, development
       }
     },
     "IIS Express": {
-      "commandName": "IISExpress",
+      "commandName": "IISExpress", // indicates IIS Express || Internet Information Services
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development" // production, staging, uat, development
       }
     }
   }
