@@ -1,40 +1,46 @@
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-//app.MapGet("/", () => "Hello World!");
-
 // Gets created automatically on receiving Http request
 // context contains the information about request/response with other information
 app.Run(async (HttpContext context) =>
 {
-    // add response headers
-    // context.Response.Headers: it's a dictionary
-    context.Response.Headers["myKey"] = "myValue";
+    context.Response.Headers["Content-Type"] = "text/html";
 
-    // hiding server info
-    context.Response.Headers["server"] = "my server";
+    // reads path of the url
+    // we can build our logic based on path
+    string path = context.Request.Path;
 
-    // content-type: use to specify the type of response being sent
+    // reads mathod of the request
+    string method = context.Request.Method;
 
-    // content-type: text/html; 
-    context.Response.Headers["content-type"] = "text/html";
+    // ? separates path and query string || & separates two query strings
+    // /dashboard?id=1&name=rahul : path = /dashboard, query string: id=1 || name = rahul
 
-    // cache-control: max-age=60(seconds) - if same url is hit again, it reads the values from browser cache
+    if(method == "GET")
+    {
+        // context.Request.Query: A dictionary containing key value pair of query string & their values
+        if(context.Request.Query.ContainsKey("id"))
+        {
+            string id = context.Request.Query["id"];
+            await context.Response.WriteAsync($"<h1>{id}</h1>");
+        }
+    }
 
-    // access-control-allow-origin
+    // Accept: represents MIME type of response content to be accepted by the client | it generally tells server, i can take response in this type only
+    // Accept-Language: language of response content
+    // Host: server domain name
+    // User-Agent: the type of browser from which request is coming to server
+    // Cookie: contains cookie to send browser
 
-    // location: to redirect
+    if(context.Request.Headers.ContainsKey("User-Agent"))
+    {
+        string userAgent = context.Request.Headers["User-Agent"];
+        await context.Response.WriteAsync($"<h2>{userAgent}</h2>");
+    }
 
-    // assign status codes
-    context.Response.StatusCode = 400;
-
-    // use to write anything in body
-    await context.Response.WriteAsync("<h1>Hello</h1>");
-
-    // if you intend to pass html values, you need to specify headers first
-
-
-    await context.Response.WriteAsync("<h2>World</h2>");
+    await context.Response.WriteAsync($"<p>{path}</p>");
+    await context.Response.WriteAsync($"<p>{method}</p>");
 });
 
 app.Run();
