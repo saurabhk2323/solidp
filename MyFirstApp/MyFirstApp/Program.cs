@@ -44,6 +44,17 @@ app.MapControllers();
 //    await context.Response.WriteAsync("Hello ");
 //});
 
+// this is used in conditional statements, follow below example
+app.UseWhen(
+    (HttpContext context) => context.Request.Query.ContainsKey("firstName"),
+    (app) => {
+        app.Use(async (context, next) =>
+        {
+            await context.Response.WriteAsync("useWhen condition matched and middleware is executed");
+            await next();
+        });
+    });
+
 // Middleware - 1
 // so how to achieve chaining of middleware --> take help from "Use"
 app.Use(async (HttpContext context, RequestDelegate next) =>
