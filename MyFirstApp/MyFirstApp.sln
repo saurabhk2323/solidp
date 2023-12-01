@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFirstApp", "MyFirstApp\MyFirstApp.csproj", "{5E01E6EC-B7A5-4E3A-A630-C011D1BDBFCE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyFirstApp", "MyFirstApp\MyFirstApp.csproj", "{5E01E6EC-B7A5-4E3A-A630-C011D1BDBFCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoutingExample", "RoutingExample\RoutingExample.csproj", "{FB133084-07C0-4548-9D08-617FE7EB1E70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{5E01E6EC-B7A5-4E3A-A630-C011D1BDBFCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E01E6EC-B7A5-4E3A-A630-C011D1BDBFCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E01E6EC-B7A5-4E3A-A630-C011D1BDBFCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB133084-07C0-4548-9D08-617FE7EB1E70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB133084-07C0-4548-9D08-617FE7EB1E70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB133084-07C0-4548-9D08-617FE7EB1E70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB133084-07C0-4548-9D08-617FE7EB1E70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
