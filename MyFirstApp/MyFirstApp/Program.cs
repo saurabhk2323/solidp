@@ -7,6 +7,36 @@ builder.Services.AddTransient<MyCustomMiddleware>();
 
 var app = builder.Build();
 
+// standard right order of middleware
+
+/*
+
+app.UseExceptionHandler("/Error");
+
+app.UseHsts();
+
+app.UseHttpsRedirection();
+
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseRouting();
+
+app.UseCors();
+
+app.UseAuthentication();
+
+app.UseAuthorization();
+
+app.UseSession();
+
+app.MapControllers();
+
+*/
+
+// add your custom middleware here
+
 
 // it does not forward request to subsequent middleware
 //app.Run(async (HttpContext context) =>
