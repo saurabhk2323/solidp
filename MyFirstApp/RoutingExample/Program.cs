@@ -1,48 +1,31 @@
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-// GetEndPoint -> displayName & requestDelegate
-// when called before "useRouting" -> returns null
-app.Use(async (context, next) =>
-{
-    Endpoint endpoint = context.GetEndpoint();
-    await next(context);
-});
-
 // enable routings
-// along with this, we must have to use map* as well
 app.UseRouting();
 
-// GetEndPoint -> displayName & requestDelegate
-// when called before "useRouting" -> returns null
-// Note: if none of the defined endpoints matched, GetEndpoint returns null only
-app.Use(async (context, next) =>
-{
-    Endpoint endpoint = context.GetEndpoint(); // map1 HTTP: GET
-    await next(context);
-});
-
-// creating endpoints
-// first of all endpoints are matched here
-// if anyone endpoint matched, it doesn't execute others
+// Route Paramters
 app.UseEndpoints(endpoints =>
 {
-    // add your endpoints here
-
-    // Map works for all kind of requests
-    endpoints.MapGet("map1", async (context) =>
+    // define route paramters as shown below --> filename and extension can be anything
+    endpoints.Map("files/{filename}.{extension}", async (context) =>
     {
-        await context.Response.WriteAsync("In Map 1");
+        // extract route params values - RouteValues: Dictionary
+        string? fileName = Convert.ToString(context.Request.RouteValues["filename"]); // by default returns value as object type
+        string? extension = Convert.ToString(context.Request.RouteValues["extension"]);
+
+        await context.Response.WriteAsync($"In files - {fileName}.{extension}");
     });
 
-    endpoints.MapPost("map2", async (context) =>
+    // we can define any number of endpoints - route params
+    endpoints.Map("employee/profile/{employeeName}", async (context) =>
     {
-        await context.Response.WriteAsync("In Map 2");
-    });
+        string? empName = Convert.ToString(context.Request.RouteValues["employeeName"]);
 
+        await context.Response.WriteAsync($"Employee Name: {empName}");
+    });
 });
 
-// default execution - if endpoints don't match from above defined ones
 app.Run(async (context) =>
 {
     await context.Response.WriteAsync($"Request received at {context.Request.Path}");
