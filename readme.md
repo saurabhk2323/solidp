@@ -14,8 +14,10 @@ Create the database
 	Install-Package Microsoft EntityFrameworkCore.Tools -Version 6.0.26
 	Add-Migration InitialCreate
 	Update-Database
- 
- 
+
+--------------------------------------------------------------------------------------------------------------
+Learn Solid Principle Concepts
+--------------------------------------------------------------------------------------------------------------
 https://www.telerik.com/blogs/aspnet-core-basics-understanding-practicing-solid
 
 SOLID Principle
