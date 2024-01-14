@@ -1,4 +1,22 @@
-﻿https://www.telerik.com/blogs/aspnet-core-basics-understanding-practicing-solid
+Start with SQLite in few steps
+﻿dotnet 6
+https://learn.microsoft.com/en-us/ef/core/get-started/overview/first-app?tabs=visual-studio
+
+Create a console app
+
+Install Entity Framework Core
+	- Install-Package Microsoft.EntityFrameworkCore.Sqlite -Version 6.0.26
+
+Create the model
+	Define a context class and an entity class that make up the model
+
+Create the database
+	Install-Package Microsoft EntityFrameworkCore.Tools -Version 6.0.26
+	Add-Migration InitialCreate
+	Update-Database
+ 
+ 
+https://www.telerik.com/blogs/aspnet-core-basics-understanding-practicing-solid
 
 SOLID Principle
 SOLID is an acronym created by Robert C Martin that represents set of object oriented design principles that aim to improve 
