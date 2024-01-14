@@ -8,9 +8,22 @@ namespace ControllersExample.Controllers
     public class HomeController
     {
         [Route("/")]
-        public string method1()
+        [Route("/home")]
+        public string Home()
         {
-            return "hello from method1";
+            return "hello from Home page";
+        }
+
+        [Route("/about")]
+        public string About()
+        {
+            return "hello from about page";
+        }
+
+        [Route("/contact")]
+        public string Contact()
+        {
+            return "hello from contact page";
         }
     }
 }

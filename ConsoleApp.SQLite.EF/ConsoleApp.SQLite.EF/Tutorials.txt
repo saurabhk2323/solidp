@@ -1,0 +1,16 @@
+﻿dotnet 6
+https://learn.microsoft.com/en-us/ef/core/get-started/overview/first-app?tabs=visual-studio
+
+Create a console app
+
+Install Entity Framework Core
+	- Install-Package Microsoft.EntityFrameworkCore.Sqlite -Version 6.0.26
+
+Create the model
+	Define a context class and an entity class that make up the model
+
+Create the database
+	Install-Package Microsoft EntityFrameworkCore.Tools -Version 6.0.26
+	Add-Migration InitialCreate
+	Update-Database
+
